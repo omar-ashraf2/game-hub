@@ -3,7 +3,3 @@ export interface Genre {
   name: string;
   slug: string;
 }
-export interface FetchGenresResponse {
-  count: number;
-  results: Genre[];
-}
