@@ -9,7 +9,7 @@ interface Props {
 }
 const GameGrid = ({ gameQuery }: Props) => {
   const { data: games, error, isLoading } = useGames(gameQuery);
-  const skeletonKeys = Array(6)
+  const skeletonKeys = Array(8)
     .fill(0)
     .map((_, i) => `skeleton-${i}`);
 
