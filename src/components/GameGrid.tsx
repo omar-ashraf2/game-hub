@@ -9,6 +9,9 @@ interface Props {
 }
 const GameGrid = ({ gameQuery }: Props) => {
   const { data: games, error, isLoading } = useGames(gameQuery);
+  const skeletonKeys = Array(6)
+    .fill(0)
+    .map((_, i) => `skeleton-${i}`);
 
   return (
     <>
@@ -18,13 +21,11 @@ const GameGrid = ({ gameQuery }: Props) => {
         padding="10px"
       >
         {isLoading &&
-          Array(6)
-            .fill(0)
-            .map((_, i) => (
-              <GameCardContainer key={i}>
-                <GameCardSkeleton />
-              </GameCardContainer>
-            ))}
+          skeletonKeys.map((key) => (
+            <GameCardContainer key={key}>
+              <GameCardSkeleton />
+            </GameCardContainer>
+          ))}
         {games.map((game) => (
           <GameCardContainer key={game.id}>
             <GameCard game={game} />
